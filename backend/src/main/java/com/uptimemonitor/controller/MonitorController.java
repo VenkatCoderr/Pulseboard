@@ -45,7 +45,7 @@ public class MonitorController {
     public ResponseEntity<Void> deleteMonitor(@AuthenticationPrincipal User user, @PathVariable UUID id) {
         monitorService.deleteMonitor(user, id);
         return ResponseEntity.noContent().build();
-    }
+    }   
 
     @GetMapping("/{id}/logs")
     public ResponseEntity<List<CheckLogResponse>> getLogs(@AuthenticationPrincipal User user, @PathVariable UUID id) {
@@ -57,3 +57,4 @@ public class MonitorController {
         return ResponseEntity.ok(monitorService.getStats(user, id));
     }
 }
+    

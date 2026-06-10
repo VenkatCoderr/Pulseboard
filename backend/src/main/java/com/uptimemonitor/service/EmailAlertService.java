@@ -19,6 +19,7 @@ public class EmailAlertService {
     }
 
     public void sendAlert(Monitor monitor, AlertType alertType, Integer statusCode, long responseTimeMs) {
+        
         String subject = alertType == AlertType.DOWN
                 ? "Monitor Down: " + monitor.getName()
                 : "Monitor Recovered: " + monitor.getName();

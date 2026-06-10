@@ -49,16 +49,17 @@ public class MonitoringService {
     }
 
     public void checkActiveMonitors() {
-        List<Monitor> monitors = monitorRepository.findByActiveTrue();
+    List<Monitor> monitors = monitorRepository.findByActiveTrue();
 
-        for (Monitor monitor : monitors) {
-            try {
-                checkSingleMonitor(monitor);
-            } catch (Exception exception) {
-                log.error("Failed to process monitor {}", monitor.getId(), exception);
-            }
-        }
-    }
+    monitors.parallelStream()
+            .forEach(monitor -> {
+                try {
+                    checkSingleMonitor(monitor);
+                } catch (Exception exception) {
+                    log.error("Failed to process monitor {}", monitor.getId(), exception);
+                }
+            });
+}
 
     @Transactional
     public void checkSingleMonitor(Monitor monitor) {
