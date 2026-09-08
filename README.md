@@ -18,7 +18,7 @@ backend/   Spring Boot API, scheduler, persistence, security, mail
 frontend/  React dashboard, auth flow, monitor detail page
 ```
 
-## Backend Features
+## Backend Features  [See (docs/API.md) for full endpoint documentation] 
 
 - `POST /api/auth/register`
 - `POST /api/auth/login`
